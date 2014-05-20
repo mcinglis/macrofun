@@ -1,7 +1,7 @@
 
 **[Macrofun](https://github.com/mcinglis/macrofun)** provides functional-programming macros for the C preprocessor, like mapping, folding and zipping over arguments in various forms.
 
- **Macrofun is just a demonstration; please don't use it.** It depends on preprocessing behavior of GCC and Clang that does not conform to the ISO C99 and C11 standard, even though it prompts no warnings for those preprocessors under `-std=c11 -Wall`. Section 6.10.3.4 paragraph 2 of the [C11 standard](http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf) specifies:
+ **Macrofun is just a demonstration; please don't use it.** It depends on preprocessing behavior of GCC and Clang that does not conform to the ISO C11 standard (nor C99), even though it prompts no warnings for those preprocessors under `-std=c11 -Wall`. Section 6.10.3.4 paragraph 2 of the [C11 standard](http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf) specifies:
 
 > If the name of the macro being replaced is found during this scan of the replacement list (not including the rest of the source file’s preprocessing tokens), it is not replaced. Furthermore, **if any nested replacements encounter the name of the macro being replaced, it is not replaced.** These nonreplaced macro name preprocessing tokens are no longer available for further replacement even if they are later (re)examined in contexts in which that macro name preprocessing token would otherwise have been replaced.
 

@@ -3,7 +3,7 @@
 #define MACROFUN_LIST_H
 
 
-#include "call.h"   // CALL
+#include "blank.h"  // BLANK
 #include "paren.h"  // UNPAREN
 
 
@@ -16,7 +16,7 @@
 //      LIST_REST( ( a, b, c ) )  >>>  ( b, c )
 //
 #define LIST_REST( xs ) \
-    CALL( LIST_REST_, UNPAREN( xs ) )
+    LIST_REST_ BLANK ( UNPAREN( xs ) )
 #define LIST_REST_( x, ... ) ( __VA_ARGS__ )
 
 
@@ -28,7 +28,7 @@
 //      LIST_1ST( ( ( a ), b ) )  >>>  ( a )
 //
 #define LIST_1ST( xs ) \
-    CALL( LIST_1ST_, UNPAREN( xs ) )
+    LIST_1ST_ BLANK ( UNPAREN( xs ) )
 #define LIST_1ST_( x, ... ) x
 
 
@@ -41,7 +41,7 @@
 //      LIST_2ND( ( a, ( b ) )   >>>  ( b )
 //
 #define LIST_2ND( xs ) \
-    CALL( LIST_2ND_, UNPAREN( xs ) )
+    LIST_2ND_ BLANK ( UNPAREN( xs ) )
 #define LIST_2ND_( x, y, ... ) y
 
 

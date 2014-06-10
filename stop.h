@@ -4,7 +4,7 @@
 
 
 #include "args.h"   // ARGS_2ND
-#include "call.h"   // CALL
+#include "blank.h"  // BLANK
 #include "list.h"   // LIST_2ND
 
 
@@ -16,7 +16,7 @@
 // `STOP` does), this evaluates to the given `then`.  Otherwise, this
 // evaluates to the given `els` (else).
 #define IF_STOP( x, then, els ) \
-    CALL( ARGS_2ND, COMMA_IF_STOP( x ) then, els, 0 )
+    ARGS_2ND BLANK ( COMMA_IF_STOP( x ) then, els, 0 )
 
 
 // If `x` is `STOP` (or, really, just begins with as many parentheses as
@@ -27,29 +27,29 @@
     IF_STOP( x, STOP, els )
 
 
-// If the given expression is `STOP` (or, really, just begins with as many
-// parentheses as `STOP` does), this evaluates to `,`.  Otherwise, this
-// evaluates to some expression without a comma. This can be used to shuffle
-// the positions of arguments.
-#define COMMA_IF_STOP( ... ) \
-    COMMA_IF_STOP_7_0( __VA_ARGS__ )
+// If `x` is `STOP` (or, really, just begins with as many parentheses as
+// `STOP` does), this evaluates to `x,`.  Otherwise, this evaluates to some
+// expression without a comma. This can be used to shuffle the positions of
+// arguments.
+#define COMMA_IF_STOP( x ) \
+    COMMA_IF_STOP_7_0( x )
 
 #define COMMA_IF_STOP_7_0( ... ) COMMA_IF_STOP_7_1( __VA_ARGS__, 0 )
-#define COMMA_IF_STOP_7_1( x7, ... ) COMMA_IF_STOP_6_0 x7
+#define COMMA_IF_STOP_7_1( x, ... ) COMMA_IF_STOP_6_0 x
 #define COMMA_IF_STOP_6_0( ... ) COMMA_IF_STOP_6_1( __VA_ARGS__, 0 )
-#define COMMA_IF_STOP_6_1( x7, ... ) COMMA_IF_STOP_5_0 x7
+#define COMMA_IF_STOP_6_1( x, ... ) COMMA_IF_STOP_5_0 x
 #define COMMA_IF_STOP_5_0( ... ) COMMA_IF_STOP_5_1( __VA_ARGS__, 0 )
-#define COMMA_IF_STOP_5_1( x7, ... ) COMMA_IF_STOP_4_0 x7
+#define COMMA_IF_STOP_5_1( x, ... ) COMMA_IF_STOP_4_0 x
 #define COMMA_IF_STOP_4_0( ... ) COMMA_IF_STOP_4_1( __VA_ARGS__, 0 )
-#define COMMA_IF_STOP_4_1( x7, ... ) COMMA_IF_STOP_3_0 x7
+#define COMMA_IF_STOP_4_1( x, ... ) COMMA_IF_STOP_3_0 x
 #define COMMA_IF_STOP_3_0( ... ) COMMA_IF_STOP_3_1( __VA_ARGS__, 0 )
-#define COMMA_IF_STOP_3_1( x7, ... ) COMMA_IF_STOP_2_0 x7
+#define COMMA_IF_STOP_3_1( x, ... ) COMMA_IF_STOP_2_0 x
 #define COMMA_IF_STOP_2_0( ... ) COMMA_IF_STOP_2_1( __VA_ARGS__, 0 )
-#define COMMA_IF_STOP_2_1( x7, ... ) COMMA_IF_STOP_1_0 x7
+#define COMMA_IF_STOP_2_1( x, ... ) COMMA_IF_STOP_1_0 x
 #define COMMA_IF_STOP_1_0( ... ) COMMA_IF_STOP_1_1( __VA_ARGS__, 0 )
-#define COMMA_IF_STOP_1_1( x7, ... ) COMMA_IF_STOP_0_0 x7
+#define COMMA_IF_STOP_1_1( x, ... ) COMMA_IF_STOP_0_0 x
 #define COMMA_IF_STOP_0_0( ... ) COMMA_IF_STOP_0_1( __VA_ARGS__, 0 )
-#define COMMA_IF_STOP_0_1( x7, ... ) x7,
+#define COMMA_IF_STOP_0_1( x, ... ) x,
 
 // Each `_0` macro appends a `0` to the call to the associated `_1` macro, to
 // occupy the var-args argument when it would have otherwise been called with

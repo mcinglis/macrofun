@@ -1,4 +1,10 @@
 
+I've released [Libpp](https://github.com/mcinglis/libpp) which provides many similar macros, and is standards-conformant.
+
+Macrofun is still provided here as a demonstration of a cool hack.
+
+-----
+
 **[Macrofun](https://github.com/mcinglis/macrofun)** provides functional-programming macros for the C preprocessor, like mapping, folding and zipping over arguments in various forms.
 
  **Macrofun is just a demonstration; please don't use it.** It depends on preprocessing behavior of GCC and Clang that does not conform to the ISO C11 standard (nor C99), even though it prompts no warnings for those preprocessors under `-std=c11 -Wall`. Section 6.10.3.4 paragraph 2 of the [C11 standard](http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf) specifies:
